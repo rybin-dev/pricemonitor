@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pricemonitor
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties.hibernate:
+      order_inserts: true
+      order_updates: true
+      jdbc.batch_size: 50
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: validate
+    open-in-view: false
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yml
+
+jwt:
+  secret: 0301d0977d6ca3e10483caf8df7aa096baa40f2454f6ab9f6541db6ebdad8402
+  expiration: 3600000
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/app.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
